@@ -13,7 +13,7 @@ var locale = require('..');
 describe('koa-locale', function () {
 
   describe('getLocaleFromQuery()', function () {
-    it('should get a locale form query', function (done) {
+    it('should get a locale from query', function (done) {
       var app = koa();
 
       locale(app);
@@ -85,7 +85,7 @@ describe('koa-locale', function () {
   });
 
   describe('getLocaleFromHeader()', function () {
-    it('should get a locale form the `Accept-Language` of header', function (done) {
+    it('should get a locale from the `Accept-Language` of header', function (done) {
       var app = koa();
 
       locale(app);
@@ -103,7 +103,7 @@ describe('koa-locale', function () {
   });
 
   describe('getLocaleFromCookie()', function () {
-    it('should get a locale form cookie', function (done) {
+    it('should get a locale from cookie', function (done) {
       var app = koa();
 
       locale(app, {
