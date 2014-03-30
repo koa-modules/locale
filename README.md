@@ -27,13 +27,13 @@ app.use(function *(next) {
 
 ### API
 
-#### ctx.getLocaleFromQuery()
+#### ctx.getLocaleFromQuery(), ctx.request.getLocaleFromQuery()
 
-#### ctx.getLocaleFromSubdomain()
+#### ctx.getLocaleFromSubdomain(), ctx.request.getLocaleFromSubdomain()
 
-#### ctx.getLocaleFromHeader()
+#### ctx.getLocaleFromHeader(), ctx.request.getLocaleFromHeader()
 
-#### ctx.getLocaleFromCookie()
+#### ctx.getLocaleFromCookie(), ctx.request.getLocaleFromCookie()
 
 
 ### License
