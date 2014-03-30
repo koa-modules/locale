@@ -1,6 +1,6 @@
 {
   "name": "koa-locale",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get locale variable from query, subdomain, accept-languages or cookie for koa.",
   "main": "index.js",
   "scripts": {

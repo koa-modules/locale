@@ -29,11 +29,27 @@ app.use(function *(next) {
 
 #### ctx.getLocaleFromQuery(), ctx.request.getLocaleFromQuery()
 
+```
+  /?lang=en-US
+```
+
 #### ctx.getLocaleFromSubdomain(), ctx.request.getLocaleFromSubdomain()
+
+```
+  zh-CN.koajs.com
+```
 
 #### ctx.getLocaleFromHeader(), ctx.request.getLocaleFromHeader()
 
+```
+  Accept-Language: zh-CN,zh;q=0.5
+```
+
 #### ctx.getLocaleFromCookie(), ctx.request.getLocaleFromCookie()
+
+```
+  Cookie: lang=zh-TW
+```
 
 
 ### License
