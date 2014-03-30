@@ -1,0 +1,34 @@
+{
+  "name": "koa-locale",
+  "version": "0.1.0",
+  "description": "Get locale variable from query, subdomain, accept-languages or cookie for koa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "koa",
+    "locale",
+    "i18n",
+    "lang"
+  ],
+  "author": "Fangdun Cai <cfddream@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "koa": "^0.5.2",
+    "koa-compose": "^2.2.0",
+    "mocha": "^1.18.2",
+    "should": "^3.2.0",
+    "supertest": "^0.10.0"
+  },
+  "dependencies": {
+    "delegates": "0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/fundon/koa-locale.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fundon/koa-locale/issues"
+  }
+}
