@@ -15,11 +15,11 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "koa": "^0.5.2",
-    "koa-compose": "^2.2.0",
-    "mocha": "^1.18.2",
-    "should": "^3.2.0",
-    "supertest": "^0.10.0"
+    "koa": "*",
+    "koa-compose": "*",
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
   },
   "dependencies": {
     "delegates": "0.0.3"
