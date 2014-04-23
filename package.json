@@ -10,6 +10,7 @@
     "koa",
     "locale",
     "i18n",
+    "L10n",
     "lang"
   ],
   "author": "Fangdun Cai <cfddream@gmail.com>",
