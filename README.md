@@ -1,6 +1,8 @@
-# koa-locale [![Build Status](https://travis-ci.org/fundon/koa-locale.svg)](https://travis-ci.org/fundon/koa-locale)
+# koa-locale [![Build Status](https://travis-ci.org/koa-modules/koa-locale.svg)](https://travis-ci.org/koa-modules/koa-locale)
 
 Get locale variable from query, subdomain, accept-languages or cookie for koa.
+
+  [![NPM](https://nodei.co/npm/koa-locale.png?downloads=true)](https://nodei.co/npm/koa-locale/)
 
 ### Installation
 
