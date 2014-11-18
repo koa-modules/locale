@@ -1,6 +1,6 @@
 {
   "name": "koa-locale",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Get locale variable from query, subdomain, accept-languages or cookie for koa.",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "supertest": "*"
   },
   "dependencies": {
-    "delegates": "0.0.3"
+    "delegates": "*"
   },
   "repository": {
     "type": "git",
