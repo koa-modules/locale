@@ -5,6 +5,7 @@
  */
 
 var delegate = require('delegates');
+var url      = require('url');
 
 /**
  *  Expose
@@ -51,6 +52,12 @@ module.exports = function (app, opts) {
     return this.ctx.cookies.get(langKey);
   };
 
+  // From URL, `http://koajs.com/en`
+  request.getLocaleFromUrl = function () {
+    var segments = url.parse(this.url).pathname.substring(1).split('/');
+    return segments.shift();
+  };
+
   /**
    *  Delegate to this.ctx.
    */
@@ -59,7 +66,8 @@ module.exports = function (app, opts) {
     .method('getLocaleFromQuery')
     .method('getLocaleFromSubdomain')
     .method('getLocaleFromHeader')
-    .method('getLocaleFromCookie');
+    .method('getLocaleFromCookie')
+    .method('getLocaleFromUrl');
 
   return app;
 };
