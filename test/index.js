@@ -122,7 +122,7 @@ describe('koa-locale', function () {
     });
   });
 
-  describe('getLocalFromUrl()', function () {
+  describe('getLocaleFromUrl()', function () {
     it('should get a locale from URL', function (done) {
       var app = koa();
 

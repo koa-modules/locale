@@ -53,6 +53,12 @@ app.use(function *(next) {
   Cookie: lang=zh-TW
 ```
 
+#### ctx.getLocaleFromUrl(), ctx.request.getLocaleFromUrl()
+
+```
+  http://koajs.com/en
+```
+
 
 ### License
 
