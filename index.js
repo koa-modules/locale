@@ -5,7 +5,6 @@
  */
 
 var delegate = require('delegates');
-var url      = require('url');
 
 /**
  *  Expose
@@ -54,7 +53,7 @@ module.exports = function (app, opts) {
 
   // From URL, `http://koajs.com/en`
   request.getLocaleFromUrl = function () {
-    var segments = url.parse(this.url).pathname.substring(1).split('/');
+    var segments = this.path.substring(1).split('/');
     return segments.shift();
   };
 
