@@ -122,4 +122,23 @@ describe('koa-locale', function () {
     });
   });
 
+  describe('getLocalFromUrl()', function () {
+    it('should get a locale from URL', function (done) {
+      var app = koa();
+
+      locale(app, {
+        lang: 'locale'
+      });
+
+      app.use(function *(next) {
+        this.body = this.getLocaleFromUrl();
+      });
+
+      request(app.listen())
+        .get('/en')
+        .expect(/en/)
+        .expect(200, done);
+    });
+  });
+
 });
