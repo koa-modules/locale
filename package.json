@@ -28,7 +28,6 @@
   },
   "repository": "koa-modules/locale",
   "files": [
-    "index.js",
     "LICENSE",
     "README.md"
   ]
