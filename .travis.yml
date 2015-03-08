@@ -1,4 +1,8 @@
 language: node_js
+addons:
+  hosts:
+    - koajs.cn
+    - koajs.io
 node_js:
   - "0.11"
   - "0.12"
