@@ -10,8 +10,8 @@
 
 ### Installation
 
-```
-npm install koa-locale
+```bash
+$ npm install koa-locale
 ```
 
 ### Usage
