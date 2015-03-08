@@ -139,8 +139,9 @@ describe('koa-locale', function() {
   });
 
   describe('getLocaleFromTLD()', function() {
-    it('should get a locale from the last domain', function(done) {
-      var app = koa();
+    var app;
+    beforeEach(function () {
+      app = koa();
 
       locale(app);
 
@@ -149,11 +150,21 @@ describe('koa-locale', function() {
       });
 
       app = http.createServer(app.callback());
-      app.listen()
+      app.listen();
+    });
 
+    // You should change `/etc/hosts`.
+    it('should get `cn` locale from the last domain', function(done) {
       request('http://koajs.cn:' + app.address().port)
         .get('/')
         .expect(/cn/)
+        .expect(200, done);
+    });
+
+    it('should get `io` locale from the last domain', function(done) {
+      request('http://koajs.io:' + app.address().port)
+        .get('/')
+        .expect(/io/)
         .expect(200, done);
     });
   });
