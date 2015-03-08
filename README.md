@@ -1,8 +1,12 @@
-# koa-locale [![Build Status](https://travis-ci.org/koa-modules/koa-locale.svg)](https://travis-ci.org/koa-modules/koa-locale)
+# koa-locale
 
-Get locale variable from query, subdomain, accept-languages or cookie for koa.
+> Get locale variable from query, subdomain, the last domain, accept-languages or cookie for koa.
 
-  [![NPM](https://nodei.co/npm/koa-locale.png?downloads=true)](https://nodei.co/npm/koa-locale/)
+[![NPM version][npm-img]][npm-url]
+[![Build status][travis-img]][travis-url]
+[![Test coverage][coveralls-img]][coveralls-url]
+[![License][license-img]][license-url]
+[![Dependency status][david-img]][david-url]
 
 ### Installation
 
@@ -16,10 +20,8 @@ npm install koa-locale
 var app = require('koa')();
 var locale = require('koa-locale');
 
-locale(app, {
-  // the `lang-key` defaults to `lang`
-  lang: 'language'
-});
+// the locale key name defaults to `locale`
+locale(app, 'language');
 
 app.use(function *(next) {
   // query: '?language=en'
@@ -32,34 +34,52 @@ app.use(function *(next) {
 #### ctx.getLocaleFromQuery(), ctx.request.getLocaleFromQuery()
 
 ```
-  /?lang=en-US
+/?locale=en-US
 ```
 
 #### ctx.getLocaleFromSubdomain(), ctx.request.getLocaleFromSubdomain()
 
 ```
-  zh-CN.koajs.com
+zh-CN.koajs.com
 ```
 
 #### ctx.getLocaleFromHeader(), ctx.request.getLocaleFromHeader()
 
 ```
-  Accept-Language: zh-CN,zh;q=0.5
+Accept-Language: zh-CN,zh;q=0.5
 ```
 
 #### ctx.getLocaleFromCookie(), ctx.request.getLocaleFromCookie()
 
 ```
-  Cookie: lang=zh-TW
+Cookie: locale=zh-TW
 ```
 
 #### ctx.getLocaleFromUrl(), ctx.request.getLocaleFromUrl()
 
 ```
-  http://koajs.com/en
+http://koajs.com/en
 ```
 
+#### ctx.getLocaleFromTLD(), ctx.request.getLocaleFromTLD()
+
+```
+http://koajs.com/
+http://koajs.cn/
+http://koajs.it/
+```
 
 ### License
 
-MIT
+  MIT
+
+[npm-img]: https://img.shields.io/npm/v/koa-locale.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/koa-locale
+[travis-img]: https://img.shields.io/travis/koa-modules/locale.svg?style=flat-square
+[travis-url]: https://travis-ci.org/koa-modules/locale
+[coveralls-img]: https://img.shields.io/coveralls/koa-modules/locale.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/koa-modules/locale?branch=master
+[license-img]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
+[license-url]: LICENSE
+[david-img]: https://img.shields.io/david/koa-modules/locale.svg?style=flat-square
+[david-url]: https://david-dm.org/koa-modules/locale
