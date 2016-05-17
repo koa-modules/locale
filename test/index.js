@@ -136,6 +136,21 @@ describe('koa-locale', function() {
         .expect(/en/)
         .expect(200, done);
     });
+
+    it('should get a locale from URL with given `options.offset`', function(done) {
+      var app = koa();
+
+      locale(app);
+
+      app.use(function*(next) {
+        this.body = this.getLocaleFromUrl({ offset: 2 });
+      });
+
+      request(app.listen())
+        .get('/foo/bar/en')
+        .expect(/en/)
+        .expect(200, done);
+    });
   });
 
   describe('getLocaleFromTLD()', function() {
