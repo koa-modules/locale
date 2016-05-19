@@ -55,10 +55,16 @@ Accept-Language: zh-CN,zh;q=0.5
 Cookie: locale=zh-TW
 ```
 
-#### ctx.getLocaleFromUrl(), ctx.request.getLocaleFromUrl()
+#### ctx.getLocaleFromUrl(options), ctx.request.getLocaleFromUrl(options)
 
 ```
 http://koajs.com/en
+```
+
+```
+options = { offset: 2 }
+
+http://koajs.com/foo/bar/en
 ```
 
 #### ctx.getLocaleFromTLD(), ctx.request.getLocaleFromTLD()

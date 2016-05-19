@@ -17,6 +17,7 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "bluebird": "^3.4.0",
     "koa": "^0.18.1",
     "koa-compose": "*",
     "mocha": "^2.2.0",

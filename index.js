@@ -63,9 +63,9 @@ module.exports = function(app, key) {
 
   // From URL, `http://koajs.com/en`
   Object.defineProperty(request, 'getLocaleFromUrl', {
-    value: function() {
+    value: function(options) {
       var segments = this.path.substring(1).split('/');
-      return segments.shift();
+      return segments[options && options.offset || 0];
     }
   });
 
