@@ -143,7 +143,9 @@ describe('koa-locale', function() {
       locale(app);
 
       app.use(function*(next) {
-        this.body = this.getLocaleFromUrl({ offset: 2 });
+        this.body = this.getLocaleFromUrl({
+          offset: 2
+        });
       });
 
       request(app.listen())
@@ -155,7 +157,7 @@ describe('koa-locale', function() {
 
   describe('getLocaleFromTLD()', function() {
     var app;
-    beforeEach(function () {
+    beforeEach(function() {
       app = koa();
 
       locale(app);

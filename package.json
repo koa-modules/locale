@@ -4,7 +4,9 @@
   "description": "Get locale variable from query, subdomain, the last domain, accept-languages or cookie for koa.",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "mocha --harmony --reporter spec --bail --check-leaks",
+    "test-ci": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/*.js",
+    "test-cov": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/*.js"
   },
   "keywords": [
     "koa",
@@ -17,15 +19,16 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "bluebird": "^3.4.0",
-    "koa": "^0.18.1",
-    "koa-compose": "*",
-    "mocha": "^2.2.0",
-    "should": "^5.1.0",
-    "supertest": "*"
+    "bluebird": "3.4.0",
+    "istanbul": "0.4.3",
+    "koa": "1.2.0",
+    "koa-compose": "2.4.0",
+    "mocha": "2.4.5",
+    "should": "8.3.2",
+    "supertest": "1.2.0"
   },
   "dependencies": {
-    "delegates": "*"
+    "delegates": "1.0.0"
   },
   "repository": "koa-modules/locale",
   "files": [

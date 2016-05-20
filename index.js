@@ -44,7 +44,8 @@ module.exports = function(app, key) {
     value: function() {
       var accept = this.acceptsLanguages() || '',
         reg = /(^|,\s*)([a-z-]+)/gi,
-        match, locale;
+        match,
+        locale;
       while ((match = reg.exec(accept))) {
         if (!locale) {
           locale = match[2];
