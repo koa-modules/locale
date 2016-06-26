@@ -41,17 +41,18 @@ module.exports = function(app, key) {
 
   // From accept-language, `Accept-Language: zh-CN`
   Object.defineProperty(request, 'getLocaleFromHeader', {
-    value: function() {
+    value: function(multi) {
       var accept = this.acceptsLanguages() || '',
         reg = /(^|,\s*)([a-z-]+)/gi,
-        match,
-        locale;
+        locales = [],
+        match;
       while ((match = reg.exec(accept))) {
-        if (!locale) {
-          locale = match[2];
+        locales.push(match[2])
+        if (!multi && locales.length) {
+          break;
         }
       }
-      return locale;
+      return multi ? locales : locales[0];
     }
   });
 

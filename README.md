@@ -43,7 +43,7 @@ app.use(function *(next) {
 zh-CN.koajs.com
 ```
 
-#### ctx.getLocaleFromHeader(), ctx.request.getLocaleFromHeader()
+#### ctx.getLocaleFromHeader(multi = false), ctx.request.getLocaleFromHeader(multi = false)
 
 ```
 Accept-Language: zh-CN,zh;q=0.5

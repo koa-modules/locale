@@ -103,6 +103,24 @@ describe('koa-locale', function() {
     });
   });
 
+  describe('getLocaleFromHeader()', function() {
+    it('should get multi locales from the `Accept-Language` of header', function(done) {
+      var app = koa();
+
+      locale(app);
+
+      app.use(function*(next) {
+        this.body = this.getLocaleFromHeader(true).join(',');
+      });
+
+      request(app.listen())
+        .get('/')
+        .set('Accept-Language', 'en,en-US;q=0.8')
+        .expect(/en,en-US/)
+        .expect(200, done);
+    });
+  });
+
   describe('getLocaleFromCookie()', function() {
     it('should get a locale from cookie', function(done) {
       var app = koa();
