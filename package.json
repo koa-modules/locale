@@ -1,10 +1,10 @@
 {
   "name": "koa-locale",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Get locale variable from query, subdomain, the last domain, accept-languages or cookie for koa.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --harmony --reporter spec --bail --check-leaks",
+    "test": "mocha --reporter spec --bail --check-leaks",
     "test-ci": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/*.js",
     "test-cov": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/*.js"
   },
@@ -19,13 +19,13 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "bluebird": "3.4.0",
-    "istanbul": "0.4.3",
-    "koa": "1.2.0",
-    "koa-compose": "2.4.0",
-    "mocha": "2.4.5",
-    "should": "8.3.2",
-    "supertest": "1.2.0"
+    "bluebird": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "koa": "^2.2.0",
+    "koa-compose": "^3.2.1",
+    "mocha": "^3.2.0",
+    "should": "^11.2.1",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "delegates": "1.0.0"

@@ -11,16 +11,16 @@ var koa = require('koa');
 var compose = require('koa-compose');
 var locale = require('..');
 
-describe('koa-locale', function() {
+describe('koa-locale', () => {
 
-  describe('getLocaleFromQuery()', function() {
-    it('should get a locale from query', function(done) {
-      var app = koa();
+  describe('getLocaleFromQuery()', () => {
+    it('should get a locale from query', done => {
+      var app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromQuery();
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromQuery();
       });
 
       request(app.listen())
@@ -30,38 +30,38 @@ describe('koa-locale', function() {
     });
   });
 
-  describe('getLocaleFromSubdomain()', function() {
-    var app = koa();
+  describe('getLocaleFromSubdomain()', () => {
+    var app = new koa();
 
     locale(app);
 
-    var enApp = koa();
-    enApp.use(function*() {
-      this.body = this.getLocaleFromSubdomain();
+    var enApp = new koa();
+    enApp.use(ctx => {
+      ctx.body = ctx.getLocaleFromSubdomain();
     });
-    enApp = compose(enApp);
+    enApp = compose(enApp.middleware);
 
-    var zhCNApp = koa();
-    zhCNApp.use(function*() {
-      this.body = this.getLocaleFromSubdomain();
+    var zhCNApp = new koa();
+    zhCNApp.use(ctx => {
+      ctx.body = ctx.getLocaleFromSubdomain();
     });
-    zhCNApp = compose(zhCNApp);
+    zhCNApp = compose(zhCNApp.middleware);
 
-    app.use(function*(next) {
-      switch (this.host) {
+    app.use((ctx, next) => {
+      switch (ctx.host) {
         case 'en.koajs.com':
-          return yield enApp.call(this, next);
+          return enApp(ctx, next);
         case 'zh-CN.koajs.com':
-          return yield zhCNApp.call(this, next);
+          return zhCNApp(ctx, next);
       }
-      yield next;
+      return next();
     });
 
-    app.use(function*(next) {
-      this.body = this.getLocaleFromSubdomain();
+    app.use(ctx => {
+      ctx.body = ctx.getLocaleFromSubdomain() || '';
     });
 
-    it('should be return `en` ', function(done) {
+    it('should be return `en` ', done => {
       request(app.listen())
         .get('/')
         .set('Host', 'en.koajs.com')
@@ -69,7 +69,7 @@ describe('koa-locale', function() {
         .expect(200, done);
     });
 
-    it('should be return `zh-CN` ', function(done) {
+    it('should be return `zh-CN` ', done => {
       request(app.listen())
         .get('/')
         .set('Host', 'zh-CN.koajs.com')
@@ -77,22 +77,22 @@ describe('koa-locale', function() {
         .expect(200, done);
     });
 
-    it('should be `127` ', function(done) {
+    it('should be empty string', done => {
       request(app.listen())
         .get('/')
-        .expect(/127/)
+        .expect('')
         .expect(200, done);
     });
   });
 
-  describe('getLocaleFromHeader()', function() {
-    it('should get a locale from the `Accept-Language` of header', function(done) {
-      var app = koa();
+  describe('getLocaleFromHeader()', () => {
+    it('should get a locale from the `Accept-Language` of header', done => {
+      var app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromHeader();
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromHeader();
       });
 
       request(app.listen())
@@ -103,14 +103,14 @@ describe('koa-locale', function() {
     });
   });
 
-  describe('getLocaleFromHeader()', function() {
-    it('should get multi locales from the `Accept-Language` of header', function(done) {
-      var app = koa();
+  describe('getLocaleFromHeader()', () => {
+    it('should get multi locales from the `Accept-Language` of header', done => {
+      var app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromHeader(true).join(',');
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromHeader(true).join(',');
       });
 
       request(app.listen())
@@ -121,14 +121,14 @@ describe('koa-locale', function() {
     });
   });
 
-  describe('getLocaleFromCookie()', function() {
-    it('should get a locale from cookie', function(done) {
-      var app = koa();
+  describe('getLocaleFromCookie()', () => {
+    it('should get a locale from cookie', done => {
+      var app = new koa();
 
       locale(app, 'lang');
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromCookie();
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromCookie();
       });
 
       request(app.listen())
@@ -139,14 +139,14 @@ describe('koa-locale', function() {
     });
   });
 
-  describe('getLocaleFromUrl()', function() {
-    it('should get a locale from URL', function(done) {
-      var app = koa();
+  describe('getLocaleFromUrl()', () => {
+    it('should get a locale from URL', done => {
+      var app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromUrl();
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromUrl();
       });
 
       request(app.listen())
@@ -155,13 +155,13 @@ describe('koa-locale', function() {
         .expect(200, done);
     });
 
-    it('should get a locale from URL with given `options.offset`', function(done) {
-      var app = koa();
+    it('should get a locale from URL with given `options.offset`', done => {
+      var app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromUrl({
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromUrl({
           offset: 2
         });
       });
@@ -173,15 +173,15 @@ describe('koa-locale', function() {
     });
   });
 
-  describe('getLocaleFromTLD()', function() {
+  describe('getLocaleFromTLD()', () => {
     var app;
     beforeEach(function() {
-      app = koa();
+      app = new koa();
 
       locale(app);
 
-      app.use(function*(next) {
-        this.body = this.getLocaleFromTLD();
+      app.use(ctx => {
+        ctx.body = ctx.getLocaleFromTLD();
       });
 
       app = http.createServer(app.callback());
@@ -189,14 +189,14 @@ describe('koa-locale', function() {
     });
 
     // You should change `/etc/hosts`.
-    it('should get `cn` locale from the last domain', function(done) {
+    it('should get `cn` locale from the last domain', done => {
       request('http://koajs.cn:' + app.address().port)
         .get('/')
         .expect(/cn/)
         .expect(200, done);
     });
 
-    it('should get `io` locale from the last domain', function(done) {
+    it('should get `io` locale from the last domain', done => {
       request('http://koajs.io:' + app.address().port)
         .get('/')
         .expect(/io/)
