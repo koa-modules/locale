@@ -32,7 +32,7 @@ module.exports = function(app, key) {
     }
   });
 
-  // From query, `locale=en`
+  // From subdomain, `zh-CN.koajs.com`
   Object.defineProperty(request, 'getLocaleFromSubdomain', {
     value: function() {
       return this.subdomains.pop();
